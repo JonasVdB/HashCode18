@@ -1,0 +1,3 @@
+[submodule "HashCodeCI"]
+	path = HashCodeCI
+	url = https://github.com/JonasVdB/HashCodeCI.git
