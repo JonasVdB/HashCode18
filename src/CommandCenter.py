@@ -9,7 +9,6 @@ class CommandCenter:
         self.bonus = bonus
 
     def planAllCars(self):
-
         for car in self.cars:
             self.planCar(car)
 
@@ -20,6 +19,7 @@ class CommandCenter:
             #Select a ride to add to the car
             selected_ride = self.findClosestRide(location,time,self.rides,self.simTime)
             if selected_ride is None:
+
                 break
             #add the ride to the car
             car.addNewRide(selected_ride)
@@ -32,6 +32,8 @@ class CommandCenter:
             time += Location.distance(selected_ride.start_location, selected_ride.finish_location)
 
 
+
+
     def findClosestRide(self,carLocation,currentTime,rides,maxSimTime):
         best_ride = None
         best_ride_value = 0
@@ -40,6 +42,7 @@ class CommandCenter:
                 ride_value = self.rideValue(ride,carLocation,currentTime)
                 if ride_value > best_ride_value:
                     best_ride = ride
+                    best_ride_value = ride_value
         return best_ride
 
     def isFeasable(self,ride, carLocation, currentTime):

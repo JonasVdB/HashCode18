@@ -13,7 +13,7 @@ class InputParser:
         inputfile = open(filename, 'r')
         firstline = inputfile.readline()
         param = firstline[:-1].split(' ')
-        num_rows, num_cols, num_vehicles, num_rides, bonus, simsteps = int(param[0]), int(param[1]), int(param[2]), int(param[3]), int(param[4]), int(param[4])
+        num_rows, num_cols, num_vehicles, num_rides, bonus, simsteps = int(param[0]), int(param[1]), int(param[2]), int(param[3]), int(param[4]), int(param[5])
 
         for id in range(num_rides):
             rideline = inputfile.readline()

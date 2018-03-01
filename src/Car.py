@@ -15,3 +15,7 @@ class Car:
         if output != "":
             output = output[:-1]
         return str(len(self.rides)) + " " + output
+
+
+    def __str__(self):
+        return str(self.id)
