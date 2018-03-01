@@ -9,7 +9,7 @@ def process_file(filename):
 
     cmd = CommandCenter(ridelist, simsteps, cars, bonus)
 
-    cmd.planAllCars()
+    cmd.planCars()
 
     output = cmd.getOutput()
     outputfile = open("../output/" + filename + ".out", 'w')
@@ -17,7 +17,7 @@ def process_file(filename):
 
 if __name__ == "__main__":
 
-    files = ["a", "b", "c", "d", "e"]
+    files = ["a", "b", "c"]
 
     for file in files:
         print("starting file: "+file)

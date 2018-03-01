@@ -5,14 +5,20 @@ class Car:
     def __init__(self, id):
         self.rides = list()
         self.id = id
-        self.timeAvaliable = 0
+        self.timeAvailable = 0
+
         self.currentLocation = Location(0,0)
 
 
     def addNewRide(self,ride):
         self.rides.append(ride)
+        self.timeAvailable += self.currentLocation.distance(ride.start_location)
+        if(self.timeAvailable < ride.start_time):
+            self.timeAvailable = ride.start_time
+
+        self.timeAvailable += ride.start_location.distance(ride.finish_location)
         self.currentLocation = ride.finish_location
-        self.timeAvaliable
+
 
     def output(self):
         output = ""
