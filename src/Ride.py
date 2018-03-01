@@ -1,5 +1,6 @@
 class Ride:
-    def __init__(self, start_location, finish_location, start_time, finish_time):
+    def __init__(self,id, start_location, finish_location, start_time, finish_time):
+        self.id = id
         self.start_location = start_location
         self.finish_location = finish_location
         self.start_time = start_time

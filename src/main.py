@@ -1,12 +1,15 @@
 from InputParser import InputParser
+from CommandCenter import CommandCenter
 
 def process_file(filename):
     parser = InputParser()
-    parser.parse("../input/" + filename + ".in")
+    ridelist, bonus, simsteps, num_rows, num_cols, num_vehicles= parser.parse("../input/" + filename + ".in")
 
+    cmd = CommandCenter(ridelist, simsteps, num_vehicles, bonus)
 
+    output = cmd.getOutput()
     outputfile = open("../output/" + filename + ".out", 'w')
-    outputfile.write("TEST")
+    outputfile.write(output)
 
 if __name__ == "__main__":
     files = ["a", "b"]

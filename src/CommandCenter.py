@@ -1,7 +1,8 @@
 from src.Location import Location
 class CommandCenter:
-    def __init__(self):
-        self.rides = list()
+    def __init__(self, rides, simTime, car_amount, bonus ):
+        # type: (object, object, object, object) -> object
+        self.rides = rides
         self.cars = list()
         self.simTime = 0
 
@@ -34,3 +35,9 @@ class CommandCenter:
 
     def findClosestRide(self,carLocation,currentTime,rides,maxSimTime):
         return
+
+    def getOutput(self):
+        output = ""
+        for car in self.cars:
+            output += car.output() + "\n"
+        return output
