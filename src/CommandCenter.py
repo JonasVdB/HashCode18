@@ -21,9 +21,6 @@ class CommandCenter:
         self.rides.remove(selected_ride)
         return True
 
-
-
-
     def findClosestRide(self,carLocation,currentTime,rides):
         best_ride = None
         best_ride_value = 0
