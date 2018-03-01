@@ -10,7 +10,7 @@ class Car:
     def output(self):
         output = ""
         for ride in self.rides:
-            output += ride.id
+            output += str(ride.id)
             output += " "
         if output != "":
             output = output[:-1]
