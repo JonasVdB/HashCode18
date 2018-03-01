@@ -63,8 +63,9 @@ class CommandCenter:
         else:
             bonus_value = 0
         wait_time = ride.start_time - currentTime - dist_to
+        duration_ride = value_ride + dist_to + wait_time
 
-        return value_ride + bonus_value - dist_to - wait_time
+        return (value_ride + bonus_value - dist_to - wait_time)*1.0/(duration_ride)
 
 
     def getOutput(self):
