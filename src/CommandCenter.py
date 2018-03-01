@@ -65,7 +65,10 @@ class CommandCenter:
         wait_time = ride.start_time - currentTime - dist_to
         duration_ride = value_ride + dist_to + wait_time
 
-        return (value_ride + bonus_value - dist_to - wait_time)*1.0
+        if duration_ride == 0:
+            return 0
+        else:
+            return (value_ride + bonus_value - dist_to - wait_time)*1.0/(duration_ride)
 
 
     def getOutput(self):
