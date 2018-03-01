@@ -14,35 +14,37 @@ class CommandCenter:
 
     def planCars(self):
         for time in range(self.simTime):
-            print(time)
             carsAvailable = self.cardict[time]
-            for car in carsAvailable:
-                self.planRideForCar(car)
 
-                self.cardict[car.timeAvailable].append(car)
+            for car in carsAvailable:
+
+                car = self.planRideForCar(car)
+                if car is not None:
+
+                    self.cardict[car.timeAvailable].append(car)
 
             self.cardict[time]= list()
 
 
     def initcars(self):
         for car in self.cars:
+
             self.planRideForCar(car)
             self.cardict[car.timeAvailable].append(car)
 
 
 
     def planRideForCar(self,car):
+
         # Select a ride to add to the car
         selected_ride = self.findClosestRide(car.currentLocation, car.timeAvailable, self.rides)
         if selected_ride is None:
-            return False
+            return None
         # add the ride to the car
         car.addNewRide(selected_ride)
         self.rides.remove(selected_ride)
 
-
-
-        return True
+        return car
 
     def findClosestRide(self,carLocation,currentTime,rides):
         best_ride = None
