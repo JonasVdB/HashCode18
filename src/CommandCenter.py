@@ -1,14 +1,15 @@
 from Location import Location
 
 class CommandCenter:
-    def __init__(self, rides, simTime, car_amount, bonus ):
+    def __init__(self, rides, simTime, cars, bonus ):
         # type: (object, object, object, object) -> object
         self.rides = rides
-        self.cars = list()
+        self.cars = cars
         self.simTime = 0
         self.bonus = 0
 
     def planAllCars(self):
+
         for car in self.cars:
             self.planCar(car)
 

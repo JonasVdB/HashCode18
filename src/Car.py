@@ -7,7 +7,7 @@ class Car:
     def addNewRide(self,ride):
         self.rides.append(ride)
 
-    def output(self)
+    def output(self):
         output = ""
         for ride in self.rides:
             output += ride.id

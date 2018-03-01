@@ -3,9 +3,13 @@ from CommandCenter import CommandCenter
 
 def process_file(filename):
     parser = InputParser()
-    ridelist, bonus, simsteps, num_rows, num_cols, num_vehicles= parser.parse("../input/" + filename + ".in")
+    ridelist, bonus, simsteps, num_rows, num_cols, cars= parser.parse("../input/" + filename + ".in")
 
-    cmd = CommandCenter(ridelist, simsteps, num_vehicles, bonus)
+
+
+    cmd = CommandCenter(ridelist, simsteps, cars, bonus)
+
+    cmd.planAllCars()
 
     output = cmd.getOutput()
     outputfile = open("../output/" + filename + ".out", 'w')
