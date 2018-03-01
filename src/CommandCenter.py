@@ -26,10 +26,10 @@ class CommandCenter:
             self.rides.remove(selected_ride)
 
             #adjust the simulation time
-            time += Location.distance(location,selected_ride.start_location)
+            time += Location.distance(location,selected_ride.start_location)  # go to start
             if time<selected_ride.start_time:
-                time = selected_ride.start_time
-            time += Location.distance(selected_ride.start_location, selected_ride.finish_location)
+                time = selected_ride.start_time # waiting for ride to start
+            time += Location.distance(selected_ride.start_location, selected_ride.finish_location) # finish ride
 
 
 
