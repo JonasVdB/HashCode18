@@ -5,8 +5,8 @@ class CommandCenter:
         # type: (object, object, object, object) -> object
         self.rides = rides
         self.cars = cars
-        self.simTime = 0
-        self.bonus = 0
+        self.simTime = simTime
+        self.bonus = bonus
 
     def planAllCars(self):
 
@@ -16,7 +16,7 @@ class CommandCenter:
     def planCar(self, car):
         time = 0
         location = Location(0,0)
-        while time<=self.simTime:
+        while time <= self.simTime:
             #Select a ride to add to the car
             selected_ride = self.findClosestRide(location,time,self.rides,self.simTime)
             if selected_ride is None:
