@@ -1,4 +1,4 @@
-from src.Location import Location
+from Location import Location
 class CommandCenter:
     def __init__(self, rides, simTime, car_amount, bonus ):
         # type: (object, object, object, object) -> object
