@@ -1,5 +1,5 @@
-from InputParser import InputParser
-from CommandCenter import CommandCenter
+from .Location import InputParser
+from .CommandCenter import CommandCenter
 
 def process_file(filename):
     parser = InputParser()

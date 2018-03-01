@@ -1,6 +1,6 @@
-from Location import Location
-from Ride import Ride
-from Car import Car
+from .Location import Location
+from .Ride import Ride
+from .Car import Car
 
 class InputParser:
     def __init__(self):
