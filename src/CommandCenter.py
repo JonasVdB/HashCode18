@@ -17,9 +17,11 @@ class CommandCenter:
         time = 0
         location = Location(0,0)
         while time <= self.simTime:
+            print("looking for ride")
             #Select a ride to add to the car
             selected_ride = self.findClosestRide(location,time,self.rides,self.simTime)
             if selected_ride is None:
+                print("No more ride found")
                 break
             #add the ride to the car
             car.addNewRide(selected_ride)
@@ -60,8 +62,9 @@ class CommandCenter:
         else:
             bonus_value = 0
         wait_time = ride.start_time - currentTime - dist_to
+        duration_ride = value_ride + dist_to + wait_time
 
-        return value_ride + bonus_value - dist_to - wait_time
+        return (value_ride + bonus_value - dist_to - wait_time)*1.0/(duration_ride)
 
 
     def getOutput(self):
