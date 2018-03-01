@@ -17,32 +17,19 @@ class CommandCenter:
 
 
     def planAllCars(self):
-        for car in self.cars:
-            self.planCar(car)
+        self.planRideForCar(car)
 
-    def planCar(self, car):
-        time = 0
-        location = Location(0,0)
-        while time <= self.simTime:
-            #Select a ride to add to the car
-            selected_ride = self.findClosestRide(location,time,self.rides,self.simTime)
-            if selected_ride is None:
+    def planRideForCar(self,car):
+        # Select a ride to add to the car
+        selected_ride = self.findClosestRide(car.currentLocation, car.currentTime, self.rides)
+        if selected_ride is None:
+            return False
+        # add the ride to the car
+        car.addNewRide(selected_ride)
+        self.rides.remove(selected_ride)
+        return True
 
-                break
-            #add the ride to the car
-            car.addNewRide(selected_ride)
-            self.rides.remove(selected_ride)
-
-            #adjust the simulation time
-            time += Location.distance(location,selected_ride.start_location)  # go to start
-            if time<selected_ride.start_time:
-                time = selected_ride.start_time # waiting for ride to start
-            time += Location.distance(selected_ride.start_location, selected_ride.finish_location) # finish ride
-
-
-
-
-    def findClosestRide(self,carLocation,currentTime,rides,maxSimTime):
+    def findClosestRide(self,carLocation,currentTime,rides):
         best_ride = None
         best_ride_value = 0
         for ride in rides:
