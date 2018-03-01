@@ -21,5 +21,6 @@ class InputParser:
             finish_location = Location(fin_row, fin_col)
             ride = Ride(start_location, finish_location, start, finish)
             self.ridelist.append(ride)
+            print(ride)
 
-        return self.ridelist, bonus, simsteps
+        return self.ridelist, bonus, simsteps, num_rows, num_cols
