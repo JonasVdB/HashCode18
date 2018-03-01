@@ -5,12 +5,14 @@ class Car:
     def __init__(self, id):
         self.rides = list()
         self.id = id
-        self.currentTime = 0
+        self.timeAvaliable = 0
         self.currentLocation = Location(0,0)
 
 
     def addNewRide(self,ride):
         self.rides.append(ride)
+        self.currentLocation = ride.finish_location
+        self.timeAvaliable
 
     def output(self):
         output = ""

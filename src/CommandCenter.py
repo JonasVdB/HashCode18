@@ -1,4 +1,5 @@
 from Location import Location
+from collections import defaultdict
 
 class CommandCenter:
     def __init__(self, rides, simTime, cars, bonus ):
@@ -7,6 +8,13 @@ class CommandCenter:
         self.cars = cars
         self.simTime = simTime
         self.bonus = bonus
+        self.cardict = defaultdict(list)
+
+
+
+
+
+
 
     def planAllCars(self):
         for car in self.cars:
