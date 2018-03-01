@@ -1,9 +1,12 @@
 from src.Location import Location
+
+
 class CommandCenter:
     def __init__(self):
         self.rides = list()
         self.cars = list()
         self.simTime = 0
+        self.bonus = 0
 
     def planAllCars(self):
         for car in self.cars:
@@ -33,4 +36,32 @@ class CommandCenter:
         return
 
     def findClosestRide(self,carLocation,currentTime,rides,maxSimTime):
-        return
+        best_ride = None
+        best_ride_value = 0
+        for ride in rides:
+            if self.isFeasable(ride, carLocation, currentTime):
+                ride_value = self.rideValue(ride,carLocation,currentTime)
+                if ride_value > best_ride_value:
+                    best_ride = ride
+        return best_ride
+
+    def isFeasable(self,ride, carLocation, currentTime):
+        dist_to = Location.distance(carLocation,ride.start_location)
+        dist_ride = Location.distance(ride.start_location,ride.finish_location)
+
+        if (dist_to+dist_ride+currentTime<=ride.finish_time):
+            return True
+        else:
+            return False
+
+
+    def rideValue(self,ride, carLocation, currentTime):
+        value_ride = Location.distance(ride.start_location,ride.finish_location)
+        dist_to = Location.distance(carLocation,ride.start_location)
+        if currentTime+ dist_to <= ride.start_time:
+            bonus_value = self.bonus
+        else:
+            bonus_value = 0
+        wait_time = ride.start_time - currentTime - dist_to
+
+        return value_ride + bonus_value - dist_to - wait_time
