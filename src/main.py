@@ -17,7 +17,7 @@ def process_file(filename):
 
 if __name__ == "__main__":
 
-    files = ["d", "e"]
+    files = ["a", "b", "c", "d", "e"]
 
     for file in files:
         print("starting file: "+file)

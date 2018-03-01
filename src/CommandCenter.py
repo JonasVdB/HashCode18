@@ -9,7 +9,13 @@ class CommandCenter:
         self.simTime = simTime
         self.bonus = bonus
         self.cardict = defaultdict(list)
+        self.pruneRides()
         self.initcars()
+
+
+    def pruneRides(self):
+        self.
+        self.rides = [x for x in self.rides if not x.distance() > 5000]
 
 
     def planCars(self):
@@ -68,19 +74,21 @@ class CommandCenter:
 
 
     def rideValue(self,ride, carLocation, currentTime):
-        value_ride = Location.distance(ride.start_location,ride.finish_location)
-        dist_to = Location.distance(carLocation,ride.start_location)
+        ride_distance = ride.start_location.distance(ride.finish_location)
+        dist_to = carLocation.distance(ride.start_location)
         if currentTime+ dist_to <= ride.start_time:
             bonus_value = self.bonus
         else:
-            bonus_value = 0
+            bonus_value = 1
         wait_time = ride.start_time - currentTime - dist_to
-        duration_ride = value_ride + dist_to + wait_time
+        duration_ride = ride_distance + dist_to + wait_time
+
+        pointforride = ride_distance + bonus_value
 
         if duration_ride == 0:
             return 0
         else:
-            return (value_ride + bonus_value - dist_to - wait_time)*1.0/(duration_ride)
+            return bonus_value*(pointforride)*1.0/(ride_distance* (duration_ride)*1.0)
 
 
     def getOutput(self):
