@@ -26,15 +26,11 @@ class CommandCenter:
             self.rides.remove(selected_ride)
 
             #adjust the simulation time
-            time += self.travelTime(location,selected_ride.start_location)
+            time += Location.distance(location,selected_ride.start_location)
             if time<selected_ride.start_time:
                 time = selected_ride.start_time
-            time += self.travelTime(selected_ride.start_location, selected_ride.finish_location)
+            time += Location.distance(selected_ride.start_location, selected_ride.finish_location)
 
-
-    @staticmethod
-    def travelTime(loc1, loc2):
-        return
 
     def findClosestRide(self,carLocation,currentTime,rides,maxSimTime):
         best_ride = None
