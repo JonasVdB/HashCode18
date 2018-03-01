@@ -1,5 +1,5 @@
-from .Location import InputParser
-from .CommandCenter import CommandCenter
+from InputParser import InputParser
+from CommandCenter import CommandCenter
 
 def process_file(filename):
     parser = InputParser()
@@ -16,8 +16,8 @@ def process_file(filename):
     outputfile.write(output)
 
 if __name__ == "__main__":
-    #files = ["a", "b"]
-    files = ["a", "b", "c", "d", "e"]
+    files = ["a", "b", "c"]
+    #files = ["a", "b", "c", "d", "e"]
     for file in files:
         print("starting file: "+file)
         process_file(file)

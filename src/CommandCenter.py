@@ -1,4 +1,4 @@
-from .Location import Location
+from Location import Location
 
 class CommandCenter:
     def __init__(self, rides, simTime, cars, bonus ):
